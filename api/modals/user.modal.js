@@ -16,6 +16,10 @@ const userSchema = new mongoose.Schema(
       type: String,
       required: true,
     },
+    profilePicture:{
+      type:String,
+      default:"https://www.postendekker.nl/wp-content/uploads/2021/10/dummy-profile.jpg",
+    }
   },
   { timestamps: true }
 );
