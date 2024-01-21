@@ -26,9 +26,9 @@ export default function Signup() {
       });
       const data = await res.json();
       if (data.success === false) {
-        return setError(data.message);
+         setError(data.message); setLoading(false)
       }
-      setLoading(false);
+      
       if(res.ok){
         navigate('/sign-in')
       }
