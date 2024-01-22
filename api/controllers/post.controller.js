@@ -1,5 +1,5 @@
-import Post from "../modals/post.modal";
-import { errorHandler } from "../utils/error";
+import Post from "../modals/post.modal.js";
+import { errorHandler } from "../utils/error.js";
 
 export const create = async (req, res, next) => {
   if (!req.user.isAdmin) {
