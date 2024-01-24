@@ -44,19 +44,20 @@ export const DashUsers = () => {
   };
 
   const handleDeleteUser = async () => {
-    setShowModal(false);
     try {
-      const res = await fetch(
-        `/api/user/deletepost/${userIdToDelete}/${currentUser._id}`,
-        {
-          method: "DELETE",
+        const res = await fetch(`/api/user/delete/${userIdToDelete}`, {
+            method: 'DELETE',
+        });
+        const data = await res.json();
+        if (res.ok) {
+            setUsers((prev) => prev.filter((user) => user._id !== userIdToDelete));
+            setShowModal(false);
+        } else {
+            console.log(data.message);
         }
-      );
-      const data = res.json();
-      if (res.ok) {
-        setUsers((prev) => prev.filter((user) => user._id !== userIdToDelete));
-      }
-    } catch (error) {}
+    } catch (error) {
+        console.log(error.message);
+    }
   };
 
   return (
@@ -98,7 +99,7 @@ export const DashUsers = () => {
                     <span
                       onClick={() => {
                         setShowModal(true);
-                        userIdToDelete(user._id);
+                        setUserIdToDelete(user._id);
                       }}
                       className="font-medium text-red-500 hover:underline cursor-pointer"
                     >
