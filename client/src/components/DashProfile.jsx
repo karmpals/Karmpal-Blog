@@ -230,13 +230,13 @@ export default function DashProfile() {
           {loading ? "Updating..." : "Update"}
         </Button>
         {currentUser.isAdmin && (
-          <Link to="/create-post">
+          <Link to="/create-video">
             <Button
               type="button"
               gradientDuoTone="purpleToPink"
               className="w-full"
             >
-              Create a post
+              Create a video
             </Button>
           </Link>
         )}

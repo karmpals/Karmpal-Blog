@@ -10,9 +10,9 @@ import Header from "./components/Header";
 import FooterCom from "./components/Footer";
 import PrivateRoute from "./components/PrivateRoute";
 import OnlyAdminPrivateRoute from "./components/OnlyAdminPrivateRoute";
-import CreatePost from "./pages/CreatePost";
-import UpdatePost from "./pages/UpdatePost";
-import { PostPage } from "./pages/PostPage";
+import CreateVideo from "./pages/CreateVideo";
+import UpdateVideo from "./pages/UpdateVideo";
+import { VideoPage } from "./pages/VideoPage";
 
 export default function App() {
   return (
@@ -27,11 +27,11 @@ export default function App() {
           <Route path="/dashboard" element={<Dashboard />} />
         </Route>
         <Route element={<OnlyAdminPrivateRoute />}>
-          <Route path="/create-post" element={<CreatePost />} />
-          <Route path="/update-post/:postId" element={<UpdatePost />} />
+          <Route path="/create-video" element={<CreateVideo />} />
+          <Route path="/update-video/:videoId" element={<UpdateVideo />} />
         </Route>
         <Route path="/projects" element={<Projects />} />
-        <Route path="/post/:postSlug" element={<PostPage />} />
+        <Route path="/video/:videoSlug" element={<VideoPage />} />
       </Routes>
       <FooterCom />
     </BrowserRouter>
