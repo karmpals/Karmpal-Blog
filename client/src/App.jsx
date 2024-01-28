@@ -5,7 +5,6 @@ import About from "./pages/About";
 import Dashboard from "./pages/Dashboard";
 import Signin from "./pages/Signin";
 import Signup from "./pages/Signup";
-import Projects from "./pages/Projects";
 import Header from "./components/Header";
 import FooterCom from "./components/Footer";
 import PrivateRoute from "./components/PrivateRoute";
@@ -29,9 +28,8 @@ export default function App() {
         <Route element={<OnlyAdminPrivateRoute />}>
           <Route path="/create-video" element={<CreateVideo />} />
           <Route path="/update-video/:videoId" element={<UpdateVideo />} />
-        </Route>
-        <Route path="/projects" element={<Projects />} />
         <Route path="/video/:videoSlug" element={<VideoPage />} />
+        </Route>
       </Routes>
       <FooterCom />
     </BrowserRouter>
