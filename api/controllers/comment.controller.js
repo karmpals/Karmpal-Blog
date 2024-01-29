@@ -22,3 +22,14 @@ export const createComment = async (req, res, next) => {
     next(error);
   }
 };
+
+export const getVideoComments = async (req, res, next) => {
+  try {
+    const comments = await Comment.find({ videoId: req.params.videoId }).sort({
+      createdAt: -1,
+    });
+    res.status(200).json(comments);
+  } catch (error) {
+    next(error);
+  }
+};
