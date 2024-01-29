@@ -6,32 +6,34 @@ import Dashboard from "./pages/Dashboard";
 import Signin from "./pages/Signin";
 import Signup from "./pages/Signup";
 import Header from "./components/Header";
-import FooterCom from "./components/Footer";
+import Footer from "./components/Footer";
 import PrivateRoute from "./components/PrivateRoute";
 import OnlyAdminPrivateRoute from "./components/OnlyAdminPrivateRoute";
 import CreateVideo from "./pages/CreateVideo";
 import UpdateVideo from "./pages/UpdateVideo";
 import { VideoPage } from "./pages/VideoPage";
+import ScrollToTop from "./components/ScrollToTop";
 
 export default function App() {
   return (
     <BrowserRouter>
+      <ScrollToTop />
       <Header />
       <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/about" element={<About />} />
         <Route path="/sign-in" element={<Signin />} />
         <Route path="/sign-up" element={<Signup />} />
         <Route element={<PrivateRoute />}>
+          <Route path="/about" element={<About />} />
+          <Route path="/" element={<Home />} />
           <Route path="/dashboard" element={<Dashboard />} />
+          <Route path="/video/:videoSlug" element={<VideoPage />} />
         </Route>
         <Route element={<OnlyAdminPrivateRoute />}>
           <Route path="/create-video" element={<CreateVideo />} />
           <Route path="/update-video/:videoId" element={<UpdateVideo />} />
-        <Route path="/video/:videoSlug" element={<VideoPage />} />
         </Route>
       </Routes>
-      <FooterCom />
+      <Footer />
     </BrowserRouter>
   );
 }

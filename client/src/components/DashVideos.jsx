@@ -71,6 +71,7 @@ export default function DashVideos() {
             <Table.Head>
               <Table.HeadCell>Date updated</Table.HeadCell>
               <Table.HeadCell>Video title</Table.HeadCell>
+              <Table.HeadCell>thumbnail</Table.HeadCell>
               <Table.HeadCell>Category</Table.HeadCell>
               <Table.HeadCell>Delete</Table.HeadCell>
               <Table.HeadCell>
@@ -89,6 +90,14 @@ export default function DashVideos() {
                       to={`/video/${video.slug}`}
                     >
                       {video.title}
+                    </Link>
+                  </Table.Cell>
+                  <Table.Cell>
+                    <Link
+                      className="text-gray-900 font-medium dark:text-white"
+                      to={`/video/${video.slug}`}
+                    >
+                      <img src={video.image} className="w-20 h-10 rounded" alt="" />
                     </Link>
                   </Table.Cell>
                   <Table.Cell>{video.category}</Table.Cell>

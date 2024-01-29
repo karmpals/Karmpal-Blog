@@ -33,9 +33,9 @@ export default function Header() {
         className="self-center whitespace-nowrap text-sm sm:text-xl font-semibold dark:text-white"
       >
         <span className="px-2 py-1 bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 rounded-lg text-white">
-          Karmpal's
+          Free
         </span>
-        Blog
+        Videos
       </Link>
       <form>
         <TextInput
@@ -89,16 +89,16 @@ export default function Header() {
           </Link>
         )}
 
-        <Navbar.Toggle />
+       {currentUser && <Navbar.Toggle />}
       </div>
-      <Navbar.Collapse>
+     {currentUser && <Navbar.Collapse>
         <Navbar.Link active={path === "/"} as={"div"}>
           <Link to="/">Home</Link>
         </Navbar.Link>
         <Navbar.Link active={path === "/about"} as={"div"}>
           <Link to="/about">About</Link>
         </Navbar.Link>
-      </Navbar.Collapse>
+      </Navbar.Collapse>}
     </Navbar>
   );
 }

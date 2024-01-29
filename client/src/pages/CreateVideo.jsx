@@ -16,8 +16,11 @@ import { useNavigate } from "react-router-dom";
 export default function CreateVideo() {
   const navigate = useNavigate();
   const [videoFile, setVideoFile] = useState(null);
+  const [file, setFile] = useState(null);
   const [videoUploadProgress, setVideoUploadProgress] = useState(null);
+  const [imageUploadProgress, setimageUploadProgress] = useState(null);
   const [videoUploadError, setVideoUploadError] = useState(null);
+  const [imageUploadError, setimageUploadError] = useState(null);
   const [formData, setFormData] = useState({});
   const [publishError, setPublishError] = useState(null);
 
@@ -54,6 +57,41 @@ export default function CreateVideo() {
     } catch (error) {
       setVideoUploadError("Something went wrong!");
       setVideoUploadProgress(null);
+    }
+  };
+  const handleUploadImage = async () => {
+    try {
+      if (!file) {
+        setimageUploadError("Please select an image");
+        return;
+      }
+      setimageUploadError(null);
+      const storage = getStorage(app);
+      const fileName = new Date().getTime() + "-" + file.name;
+      const storageRef = ref(storage, fileName);
+      const uploadTask = uploadBytesResumable(storageRef, file);
+      uploadTask.on(
+        "state_changed",
+        (snapshot) => {
+          const progress =
+            (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
+          setVideoUploadProgress(progress.toFixed(0));
+        },
+        (error) => {
+          setimageUploadError("Something went wrong!");
+          setimageUploadProgress(null);
+        },
+        () => {
+          getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
+            setimageUploadError(null);
+            setimageUploadProgress(null);
+            setFormData({ ...formData, image: downloadURL });
+          });
+        }
+      );
+    } catch (error) {
+      setimageUploadError("Something went wrong!");
+      setimageUploadProgress(null);
     }
   };
 
@@ -135,7 +173,34 @@ export default function CreateVideo() {
             )}
           </Button>
         </div>
+        <div className="flex gap-4 items-center justify-between border-4 border-teal-500 border-dotted p-3">
+          <FileInput
+            type="file"
+            accept="image/*"
+            onChange={(e) => setFile(e.target.files[0])}
+          />
+          <Button
+            type="button"
+            gradientDuoTone="purpleToBlue"
+            size="sm"
+            outline
+            onClick={handleUploadImage}
+            disabled={imageUploadProgress}
+          >
+            {imageUploadProgress ? (
+              <div className="w-16 h-16">
+                <CircularProgressbar
+                  value={imageUploadProgress}
+                  text={`${imageUploadProgress || 0}%`}
+                />
+              </div>
+            ) : (
+              "Upload Image"
+            )}
+          </Button>
+        </div>
         {videoUploadError && <Alert color="failure">{videoUploadError}</Alert>}
+        {imageUploadError && <Alert color="failure">{imageUploadError}</Alert>}
         {formData.video && (
           <video
             src={formData.video}
@@ -144,13 +209,20 @@ export default function CreateVideo() {
             controls
           />
         )}
-        <ReactQuill
-          theme="snow"
-          placeholder="Write something..."
+        {formData.image && (
+          <img
+            src={formData.image}
+            alt="upload"
+            className="w-full h-72 object-fit"
+            controls
+          />
+        )}
+        <textarea
           className="h-72 mb-12"
+          placeholder="Write something..."
           required
-          onChange={(value) => {
-            setFormData({ ...formData, content: value });
+          onChange={(e) => {
+            setFormData({ ...formData, content: e.target.value });
           }}
         />
         <Button type="submit" gradientDuoTone="purpleToPink">

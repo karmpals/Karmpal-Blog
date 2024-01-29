@@ -26,11 +26,12 @@ export default function Signup() {
       });
       const data = await res.json();
       if (data.success === false) {
-         setError(data.message); setLoading(false)
+        setError(data.message);
+        setLoading(false);
       }
-      
-      if(res.ok){
-        navigate('/sign-in')
+
+      if (res.ok) {
+        navigate("/sign-in");
       }
     } catch (error) {
       setError(data.message);
@@ -48,9 +49,9 @@ export default function Signup() {
         <div className="flex-1">
           <Link to="/" className="font-bold dark:text-white text-4xl">
             <span className="px-2 py-1 bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 rounded-lg text-white">
-              Karmpal's
+              Free
             </span>
-            Blog
+            Videos
           </Link>
           <p className="text-sm mt-5">
             This is a demo project. You can sign up with your email and password
@@ -99,7 +100,7 @@ export default function Signup() {
                 "Sign Up"
               )}
             </Button>
-            <OAuth/>
+            <OAuth />
           </form>
           <div className="flex gap-2 text-sm mt-5">
             <span>Have an account?</span>

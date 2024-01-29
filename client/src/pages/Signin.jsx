@@ -52,9 +52,9 @@ export default function Signin() {
         <div className="flex-1">
           <Link to="/" className="font-bold dark:text-white text-4xl">
             <span className="px-2 py-1 bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 rounded-lg text-white">
-              Karmpal's
+              Free
             </span>
-            Blog
+            Videos
           </Link>
           <p className="text-sm mt-5">
             This is a demo project. You can sign in with your email and password
@@ -94,7 +94,7 @@ export default function Signin() {
                 "Sign In"
               )}
             </Button>
-            <OAuth/>
+            <OAuth />
           </form>
           <div className="flex gap-2 text-sm mt-5">
             <span>Don't have an account?</span>

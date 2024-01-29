@@ -1,6 +1,8 @@
 import { Button, Spinner } from "flowbite-react";
 import React, { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
+import RelatedVideos from "../components/RelatedVideos";
+import CommentSection from "../components/CommentSection";
 
 export const VideoPage = () => {
   const { videoSlug } = useParams();
@@ -38,17 +40,22 @@ export const VideoPage = () => {
     );
 
   return (
-    <main className="p-3 flex flex-col max-w-6xl mx-auto min-h-screen">
-      <video
-        src={video && video.video}
-        alt={video.title}
-        controls
-        autoPlay
-        className="mt-10 p-3 max-h-screen w-full object-cover"
-      />
-      <h1 className="p-3 text-3xl mt-10 text-left font-serif max-w-2xl max-auto lg:text-4xl">
-        {video && video.title}
-      </h1>
-    </main>
+    <div className="min-h-screen flex flex-col md:flex-row">
+      <div className="p-3 flex lg:flex-2 flex-col max-w-full mx-auto min-h-[200px]">
+        <video
+          src={video && video.video}
+          alt={video.title}
+          controls
+          // autoPlay
+          className="p-3 max-h-[550px] w-[950px] object-cover"
+        />
+        <h1 className="p-3 text-3xl text-left font-serif max-w-[990px] max-auto lg:text-2xl">
+          {video && video.title}
+        </h1>
+      </div>
+      <div className="flex flex-1 flex-col p-6">
+      <CommentSection videoId={video._id}/>
+     </div>
+    </div>
   );
 };
