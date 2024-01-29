@@ -1,4 +1,4 @@
-import { Alert, Button, FileInput, Select, TextInput } from "flowbite-react";
+import { Alert, Button, FileInput, Select, TextInput, Textarea } from "flowbite-react";
 import React, { useEffect, useState } from "react";
 import ReactQuill from "react-quill";
 import "react-quill/dist/quill.snow.css";
@@ -240,12 +240,12 @@ export default function UpdateVideo() {
             controls
           />
         )}
-        <textarea
+        <Textarea
           className="h-72 mb-12"
           placeholder="Write something..."
           required
           value={formData.content}
-          onChange={(value) => {
+          onChange={(e) => {
             setFormData({ ...formData, content: e.target.value });
           }}
         />

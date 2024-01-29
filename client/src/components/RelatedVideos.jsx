@@ -1,55 +1,32 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { useSelector } from "react-redux";
-import { Link, useParams } from "react-router-dom";
+import { Link } from "react-router-dom";
+import moment from "moment";
 
-const RelatedVideos = () => {
-  const { videoSlug } = useParams();
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(false);
-  const [video, setVideo] = useState(null);
+const RelatedVideos = ({ video }) => {
   const { currentUser } = useSelector((state) => state.user);
 
-  useEffect(() => {
-    const fetchVideo = async () => {
-      try {
-        setLoading(true);
-        const res = await fetch(`/api/video/getvideos`);
-        const data = await res.json();
-        if (!res.ok) {
-          setError(true);
-          setLoading(false);
-          return;
-        }
-        if (res.ok) {
-          setVideo(data.videos[0]);
-          setLoading(false);
-          setError(false);
-        }
-      } catch (error) {
-        setError(true);
-        setLoading(false);
-      }
-    };
-    fetchVideo();
-  }, [videoSlug]);
   return (
-    <div>
-      {/* {videos.map((video) => ( */}
-      <Link to={`/video/${video}`}>
-        <div className="flex flex-row box-shadow w-full border border-teal-300  rounded-tl-3xl rounded-tr-3xl p-3">
-          <img src={video && video.image} className="h-[100px] rounded" />
-          <div className="flex flex-col">
-            <span className="p-3 pt-0 font-semibold flex-wrap pb-0">
-              {video && video.title}
-            </span>
-            <span className="ml-3">
-              uploaded on:
-              {new Date( video&& video.createdAt).toLocaleDateString()}
-            </span>
+    <div className="flex">
+      <Link to={`/video/${video.slug}`}>
+        <div className="flex flex-row ">
+            <img
+              src={video.image}
+              className="h-20 m-2 max-w-full mx-auto rounded-xl object-cover "
+            />
+          <div className="pl-3 flex flex-col mt-1">
+            <div className="flex ml-1">
+              <span className="text-sm font-semibold dark:text-gray-300">
+                {video.title}
+              </span>
+            </div>
+            <div className="flex flex-col ml-1 dark:text-gray-400 ">
+              <span className="">{currentUser.username}</span>
+              <span className="">{moment(video.createdAt).fromNow()}</span>
+            </div>
           </div>
         </div>
       </Link>
-      {/* ))} */}
     </div>
   );
 };

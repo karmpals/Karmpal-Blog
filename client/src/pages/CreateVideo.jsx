@@ -1,4 +1,4 @@
-import { Alert, Button, FileInput, Select, TextInput } from "flowbite-react";
+import { Alert, Button, FileInput, Select, TextInput, Textarea } from "flowbite-react";
 import React, { useState } from "react";
 import ReactQuill from "react-quill";
 import "react-quill/dist/quill.snow.css";
@@ -217,7 +217,7 @@ export default function CreateVideo() {
             controls
           />
         )}
-        <textarea
+        <Textarea
           className="h-72 mb-12"
           placeholder="Write something..."
           required

@@ -88,7 +88,7 @@ const CommentSection = ({ videoId }) => {
       >
         <Textarea
           placeholder="Add a comment..."
-          rows="3"
+          rows="1"
           maxLength="300"
           onChange={(e) => setComment(e.target.value)}
           value={comment}

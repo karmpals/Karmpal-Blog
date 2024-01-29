@@ -236,7 +236,7 @@ export default function DashProfile() {
               gradientDuoTone="purpleToPink"
               className="w-full"
             >
-              Create a video
+              Upload a video
             </Button>
           </Link>
         )}
