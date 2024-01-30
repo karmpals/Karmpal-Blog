@@ -55,11 +55,11 @@ const CommentSection = ({ videoId }) => {
   const handleLike = async (commentId) => {
     try {
       if (!currentUser) {
-        navigate('/sign-in');
+        navigate("/sign-in");
         return;
       }
       const res = await fetch(`/api/comment/likeComment/${commentId}`, {
-        method: 'PUT',
+        method: "PUT",
       });
       if (res.ok) {
         const data = await res.json();
@@ -78,6 +78,13 @@ const CommentSection = ({ videoId }) => {
     } catch (error) {
       console.log(error.message);
     }
+  };
+  const handleEdit = async (comment, editedContent) => {
+    setComments(
+      comments.map((c) =>
+        c._id === comment._id ? { ...c, content: editedContent } : c
+      )
+    );
   };
 
   return (
@@ -118,7 +125,12 @@ const CommentSection = ({ videoId }) => {
             </div>
           </div>
           {comments.map((comment) => (
-            <Comments key={comment._id} comment={comment} onLike={handleLike} />
+            <Comments
+              key={comment._id}
+              comment={comment}
+              onLike={handleLike}
+              onEdit={handleEdit}
+            />
           ))}
         </>
       )}
