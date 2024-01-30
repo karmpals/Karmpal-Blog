@@ -151,6 +151,7 @@ export default function UpdateVideo() {
             type="text"
             placeholder="Title"
             id="title"
+            maxLength='75'
             className="flex-1"
             required
             onChange={(e) =>
@@ -164,10 +165,10 @@ export default function UpdateVideo() {
             }
             value={formData.category}
           >
-            <option value="uncategorized">Select a category</option>
-            <option value="movie">Movie</option>
-            <option value="web-series">Web-Series</option>
-            <option value="music">Music</option>
+            <option value="Uncategorized">Select a category</option>
+            <option value="Movie">Movie</option>
+            <option value="Web-Series">Web-Series</option>
+            <option value="Music">Music</option>
           </Select>
         </div>
         <div className="flex gap-4 items-center justify-between border-4 border-teal-500 border-dotted p-3">

@@ -13,7 +13,7 @@ const RelatedVideos = ({ video }) => {
           />
           <div className="pl-3 flex flex-col mt-1">
             <div className="flex ml-1">
-              <span className="text-sm font-semibold dark:text-gray-300">
+              <span className="text-sm line-clamp-2 font-semibold dark:text-gray-300">
                 {video.title}
               </span>
             </div>

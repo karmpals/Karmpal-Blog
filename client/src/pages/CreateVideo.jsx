@@ -129,6 +129,7 @@ export default function CreateVideo() {
           <TextInput
             type="text"
             placeholder="Title"
+            maxLength='75'
             id="title"
             className="flex-1"
             required
@@ -141,10 +142,10 @@ export default function CreateVideo() {
               setFormData({ ...formData, category: e.target.value })
             }
           >
-            <option value="uncategorized">Select a category</option>
-            <option value="movie">Movie</option>
-            <option value="web-series">Web-Series</option>
-            <option value="music">Music</option>
+            <option value="Uncategorized">Select a category</option>
+            <option value="Movie">Movie</option>
+            <option value="Web-Series">Web-Series</option>
+            <option value="Music">Music</option>
           </Select>
         </div>
         <div className="flex gap-4 items-center justify-between border-4 border-teal-500 border-dotted p-3">
