@@ -13,6 +13,7 @@ import CreateVideo from "./pages/CreateVideo";
 import UpdateVideo from "./pages/UpdateVideo";
 import { VideoPage } from "./pages/VideoPage";
 import ScrollToTop from "./components/ScrollToTop";
+import Search from "./pages/Search";
 
 export default function App() {
   return (
@@ -23,6 +24,7 @@ export default function App() {
         <Route path="/sign-in" element={<Signin />} />
         <Route path="/sign-up" element={<Signup />} />
         <Route element={<PrivateRoute />}>
+          <Route path="/search" element={<Search />} />
           <Route path="/about" element={<About />} />
           <Route path="/" element={<Home />} />
           <Route path="/dashboard" element={<Dashboard />} />

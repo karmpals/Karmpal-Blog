@@ -40,8 +40,8 @@ export const getvideos = async (req, res, next) => {
       ...(req.query.videoId && { _id: req.query.videoId }),
       ...(req.query.searchTerm && {
         $or: [
-          { title: { $regex: req.query.searchTerm, Option: "i" } },
-          { contnet: { $regex: req.query.searchTerm, Option: "i" } },
+          { title: { $regex: req.query.searchTerm, $options: 'i' } },
+          { content: { $regex: req.query.searchTerm, $options: 'i' } },
         ],
       }),
     })
