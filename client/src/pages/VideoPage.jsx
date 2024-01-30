@@ -59,7 +59,7 @@ export const VideoPage = () => {
     );
 
   return (
-    <div className="min-h-screen flex flex-col md:flex-row">
+    <div className="min-h-screen flex flex-col md:flex-row mt-10 pt-5">
       <div className="p-3 flex flex-col max-w-full mx-auto min-h-[200px]">
         <video
           src={video && video.video}
