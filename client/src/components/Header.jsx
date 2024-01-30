@@ -31,7 +31,7 @@ export default function Header() {
 
   useEffect(() => {
     const urlParams = new URLSearchParams(location.search);
-    const searchTermFromUrl = urlParams.get('searchTerm');
+    const searchTermFromUrl = urlParams.get("searchTerm");
     if (searchTermFromUrl) {
       setSearchTerm(searchTermFromUrl);
     }
@@ -40,7 +40,7 @@ export default function Header() {
   const handleSubmit = (e) => {
     e.preventDefault();
     const urlParams = new URLSearchParams(location.search);
-    urlParams.set('searchTerm', searchTerm);
+    urlParams.set("searchTerm", searchTerm);
     const searchQuery = urlParams.toString();
     navigate(`/search?${searchQuery}`);
   };
@@ -88,16 +88,11 @@ export default function Header() {
             }
           >
             <Dropdown.Header>
-              
               <span className="block text-sm">@{currentUser.username}</span>
               <span className="block text-sm font-medium truncate">
                 {currentUser.email}
               </span>
             </Dropdown.Header>
-            <Link to={"/dashboard?tab=dash"}>
-              <Dropdown.Item>Dashboard</Dropdown.Item>
-            </Link>
-            <Dropdown.Divider />
             <Link to={"/dashboard?tab=profile"}>
               <Dropdown.Item>Profile</Dropdown.Item>
             </Link>
@@ -118,9 +113,6 @@ export default function Header() {
         <Navbar.Collapse>
           <Navbar.Link active={path === "/"} as={"div"}>
             <Link to="/">Home</Link>
-          </Navbar.Link>
-          <Navbar.Link active={path === "/about"} as={"div"}>
-            <Link to="/about">About</Link>
           </Navbar.Link>
         </Navbar.Collapse>
       )}
