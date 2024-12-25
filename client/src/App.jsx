@@ -23,10 +23,10 @@ export default function App() {
       <Routes>
         <Route path="/sign-in" element={<Signin />} />
         <Route path="/sign-up" element={<Signup />} />
+          <Route path="/" element={<Home />} />
         <Route element={<PrivateRoute />}>
           <Route path="/search" element={<Search />} />
           <Route path="/about" element={<About />} />
-          <Route path="/" element={<Home />} />
           <Route path="/dashboard" element={<Dashboard />} />
           <Route path="/video/:videoSlug" element={<VideoPage />} />
         </Route>
