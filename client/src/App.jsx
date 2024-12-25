@@ -24,11 +24,11 @@ export default function App() {
         <Route path="/sign-in" element={<Signin />} />
         <Route path="/sign-up" element={<Signup />} />
           <Route path="/" element={<Home />} />
+          <Route path="/video/:videoSlug" element={<VideoPage />} />
         <Route element={<PrivateRoute />}>
           <Route path="/search" element={<Search />} />
           <Route path="/about" element={<About />} />
           <Route path="/dashboard" element={<Dashboard />} />
-          <Route path="/video/:videoSlug" element={<VideoPage />} />
         </Route>
         <Route element={<OnlyAdminPrivateRoute />}>
           <Route path="/create-video" element={<CreateVideo />} />
